@@ -31,7 +31,12 @@
         ;
     });
 
-    $app->get("/Car.php", function() {
+    $app->get("car", function() {
+      $porsche = new Car("2014 Porsche 911", 114991, 7864);
+      $ford = new Car("2011 Ford F450", 55995, 14241);
+      $lexus = new Car("2013 Lexus RX 350", 44700, 20000);
+      $mercedes = new Car("Mercedes Benz CLS550", 39900, 37979);
+
       $cars = array($porsche, $ford, $lexus, $mercedes);
 
       $cars_matching_search = array();
@@ -50,11 +55,36 @@
               array_push($cars_matching_search, $car);
           }
         }
-      });
+      $randomName = "<!DOCTYPE html>
+      <html>
+      <head>
+          <title>Your Car Dealership's Homepage</title>
+      </head>
+      <body>
+          <h1>Your Car Dealership</h1>
+          <ul>";
+      if (empty($cars_matching_search)) {
+          $randomName = $randomName."Enter a higher number.";
+      }
 
-  //   $app->get("/goodbye", function() {
-  //     return "Goodbye friend!";
-  // });
+              // <?php
+      foreach ($cars_matching_search as $car) {
+
+          $randomName = $randomName."<li>".$car->getMAkeModel()."</li>".
+              "<ul>"
+                    "<li> $car->make_model </li>";
+                    "<li> $$car->price </li>";
+                    "<li> Miles: $car->miles </li>";
+              "</ul>";
+        }
+        $randomName = $randomName."</ul>
+
+      </body>
+      </html>"
+
+
+    return $randomName;
+  }):
 
     return $app;
 ?>
