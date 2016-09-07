@@ -40,21 +40,30 @@
       $cars = array($porsche, $ford, $lexus, $mercedes);
 
       $cars_matching_search = array();
-      foreach ($cars as $car) {
-          if ($car->price < $_GET['car_price'])  {
-              array_push($cars_matching_search, $car);
-            }
+      // foreach ($cars as $car) {
+      //     if ($car->price < $_GET['car_price'])  {
+      //         array_push($cars_matching_search, $car);
+      //       }
+      //     }
+      // foreach ($cars as $car) {
+      //     if ($car->make_model == $_GET['car_model']) {
+      //         array_push($cars_matching_search, $car);
+      //     }
+      //   }
+      // foreach ($cars as $car) {
+      //     if ($car->miles < $_GET['car_miles']) {
+      //         array_push($cars_matching_search, $car);
+      //     }
+      //   }
+      function worthBuying($max_price, $max_miles)
+      {
+          if ($this->price < ($max_price + 100) && $this->miles < $max_miles) {
+              return true;
+          } else {
+              return false;
           }
-      foreach ($cars as $car) {
-          if ($car->make_model == $_GET['car_model']) {
-              array_push($cars_matching_search, $car);
-          }
-        }
-      foreach ($cars as $car) {
-          if ($car->miles < $_GET['car_miles']) {
-              array_push($cars_matching_search, $car);
-          }
-        }
+      }
+
       $randomName = "<!DOCTYPE html>
       <html>
       <head>
@@ -67,7 +76,6 @@
           $randomName = $randomName."Enter a higher number.";
       }
 
-              // <?php
       foreach ($cars_matching_search as $car) {
 
           $randomName = $randomName."<li>".$car->getMAkeModel()."</li>".

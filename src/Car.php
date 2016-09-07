@@ -3,33 +3,58 @@
 <?php
   class Car
   {
-      public $make_model;
-      public $price;
-      public $miles;
+      private $make_model;
+      private $price;
+      private $miles;
+
       function __construct($car_model, $car_price, $car_miles)
       {
           $this->make_model = $car_model;
           $this->price = $car_price;
           $this->miles = $car_miles;
       }
-      function setPrice($new_price)
+      function worthBuying($max_price, $max_miles)
       {
-        $float_price = (float) $new_price;
-        if ($float_price != 0) {
-          $formatted_price = number_format($float_price, 2);
-          $this->price = $formatted_price;
-        }
+          if ($this->price < ($max_price + 100) && $this->miles < $max_miles) {
+              return true;
+          } else {
+              return false;
+          }
       }
-      // function getPrice()
-      // {
-      //   return $this->price;
-      // }
+      function getMakeModel()
+      {
+          return $this->make_model;
+      }
+      function setMakeModel($makeModel)
+      {
+          $this->make_model = $makeModel;
+      }
+      function getPrice()
+      {
+          return $this->price;
+      }
+      function setPrice($inputPrice)
+      {
+          $this->price = $inputPrice;
+      }
+      function getMiles()
+      {
+          return $this->miles;
+      }
+      function setMiles($inputMiles)
+      {
+          $this->miles = $inputMiles;
+      }
+      function getPicture()
+      {
+          return $this->picture;
+      }
+      function setPicture($inputPicture)
+      {
+          $this->picture = $inputPicture;
+      }
   }
 
-
-  // $porsche->setPrice("1.44553");
-  // $ford->setPrice("2.44585");
-  // $mercedes->setPrice("3.44585");
 
 
 
